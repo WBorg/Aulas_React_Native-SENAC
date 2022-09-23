@@ -1,11 +1,36 @@
-import {Text, View, TextInput, TouchableOpacity} from 'react-native'
+import {Alert,Text, View, TextInput, TouchableOpacity, ScrollView} from 'react-native'
+import {useState} from 'react'
 import {styles} from './style'
-import {Participantes} from '../components/Participantes'
+import {Participant} from '../components/Participantes'
+
 
 export function Home(){
 
+const [participantes, Setparticipantes] = useState<string[]>([])
+const [participanteName, setParticipanteName] = useState('')
+
+  
+
+
 function handleParticipantAdd(){
-  console.log("Voce clicou no botao +")
+  
+  console.log(participantes)
+  Setparticipantes(prevState => [...prevState, participanteName])
+  setParticipanteName('')
+
+
+}
+function handleParticipantRemove(name: string){
+  Alert.alert("Remover", `Remover o participante ${name}?`,[
+    {
+      text: 'Sim',
+      onPress: () => Alert.alert("Deletado")
+    },
+    {
+      text: 'Não',
+      style: 'cancel'
+    },
+  ])
 }
 
 
@@ -23,14 +48,23 @@ function handleParticipantAdd(){
           style={styles.input}
           placeholder = 'nome do participante'
           placeholderTextColor="#6b6b6b"
+          onChangeText={setParticipanteName}
+          value={participanteName}
         />
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <Participantes name="Willy"/>
-      <Participantes name="Samuel"/>
-      <Participantes name="Tandara"/>
+      <ScrollView showsVerticalScrollIndicator={false}>
+         {
+            participantes.map(participante => (
+              <Participant key={participante} name={participante} onRemove={()=> handleParticipantRemove(participante)}/>
+            ))
+         }
+      </ScrollView>
+     
+     
+      
       
     </View>
   )
