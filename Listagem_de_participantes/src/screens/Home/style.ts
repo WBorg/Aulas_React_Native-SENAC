@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 42,
     marginBottom: 16,
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto_700Bold'
   }
     
 
