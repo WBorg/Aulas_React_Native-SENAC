@@ -45,9 +45,27 @@ export const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     marginTop: 34,
+  },
+  list:{
+    marginTop: 14,
+    
+  },
+  listEmptyText: {
+    color: '#FFF',
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 18
+  },
+  TitleList:{
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginTop: 42,
+    marginBottom: 16,
+    fontFamily: 'Roboto'
+  }
     
 
-  }
 
     
 });

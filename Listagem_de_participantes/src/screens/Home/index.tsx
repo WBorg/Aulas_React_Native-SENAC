@@ -1,4 +1,4 @@
-import {Alert,Text, View, TextInput, TouchableOpacity, ScrollView} from 'react-native'
+import {Alert,Text, View, TextInput, TouchableOpacity, FlatList} from 'react-native'
 import {useState} from 'react'
 import {styles} from './style'
 import {Participant} from '../components/Participantes'
@@ -6,7 +6,7 @@ import {Participant} from '../components/Participantes'
 
 export function Home(){
 
-const [participantes, Setparticipantes] = useState<string[]>([])
+const [participantes, setParticipantes] = useState<string[]>([])
 const [participanteName, setParticipanteName] = useState('')
 
   
@@ -15,7 +15,7 @@ const [participanteName, setParticipanteName] = useState('')
 function handleParticipantAdd(){
   
   console.log(participantes)
-  Setparticipantes(prevState => [...prevState, participanteName])
+  setParticipantes(prevState => [...prevState, participanteName])
   setParticipanteName('')
 
 
@@ -24,7 +24,7 @@ function handleParticipantRemove(name: string){
   Alert.alert("Remover", `Remover o participante ${name}?`,[
     {
       text: 'Sim',
-      onPress: () => Alert.alert("Deletado")
+      onPress: () => setParticipantes(prevState => prevState.filter(item => item !== name))
     },
     {
       text: 'Não',
@@ -55,14 +55,41 @@ function handleParticipantRemove(name: string){
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-         {
-            participantes.map(participante => (
-              <Participant key={participante} name={participante} onRemove={()=> handleParticipantRemove(participante)}/>
-            ))
-         }
-      </ScrollView>
-     
+          
+      {participantes.length != 0 && <Text style={styles.TitleList}>Participantes</Text> }
+      <FlatList
+
+        data={participantes}
+        keyExtractor={item=>item}
+        ListEmptyComponent={()=>(
+          <Text style={styles.listEmptyText}>
+            Ninguém chegou no evento ainda? Adicione participantes a sua lista de presença.
+          </Text>
+        )}
+        renderItem={({item})=>(
+          <Participant
+            key={item}
+            name={item}
+            onRemove={()=> handleParticipantRemove(item)}
+          
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+        
+        
+      />
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+      
      
       
       
