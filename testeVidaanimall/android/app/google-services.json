@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1087810312419",
+    "firebase_url": "https://vidaanimal-d2f44-default-rtdb.firebaseio.com",
+    "project_id": "vidaanimal-d2f44",
+    "storage_bucket": "vidaanimal-d2f44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087810312419:android:eb9c55721b7a3fc9ba0dd6",
+        "android_client_info": {
+          "package_name": "com.testevidaanimall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087810312419-27v2q48ruofebi6smc7d4sdupq3444h5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFkOK24q-HuuK-m1wlAhoxAZgEZQL9jNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087810312419-27v2q48ruofebi6smc7d4sdupq3444h5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
